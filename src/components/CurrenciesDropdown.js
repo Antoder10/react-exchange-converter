@@ -2,7 +2,7 @@ import React from 'react';
 
 const CurrenciesDropdwon = ({label, name, value, handleChanges, currencies}) => {
   return (
-    <div className="col-12">
+    <div className="col-auto">
       <label for="basic-url" class="form-label">{label}</label>
       <select
         className="form-select"

@@ -48,8 +48,8 @@ const App = () => {
   return (
     <div className="container text-center">
       <h1>Currency Converter</h1>
-      <form className="row row-cols-lg-auto g-3 justify-content-center inputs" onSubmit={handleSubmit}>
-        <div className="col-12">
+      <form className="row row-cols-lg-auto g-4 justify-content-center inputs" onSubmit={handleSubmit}>
+        <div className="col-auto">
           <label for="basic-url" class="form-label">Amount</label>
           <input
             type="text"
@@ -73,6 +73,9 @@ const App = () => {
           handleChanges={handleChanges}
           currencies={currencies}
         />
+        <div className="row row-cols-lg-auto g-4 justify-content-center">
+          <button type="submit" className="btn btn-primary">Convert</button>
+        </div>
       </form>
       {showConvertedAmount && (
         <ConvertededAmount
