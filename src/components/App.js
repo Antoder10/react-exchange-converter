@@ -21,9 +21,12 @@ const App = () => {
   const [currentRate, setCurrentRate] = useGetRate();
   const [currencies, setCurrencies] = useGetCurrencies();
 
+  useEffect(() => {
+    setCurrentRate(fromCurrency, toCurrency);
+  }, [fromCurrency, toCurrency]);
+
   const handleSubmit = e => {
     e.preventDefault();
-    setCurrentRate(fromCurrency, toCurrency);
     if(currentRate) {
       setValues({
         ...values,
