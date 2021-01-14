@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../node_modules/currency-flags/dist/currency-flags.css';
 
 const CurrenciesDropdwon = ({label, name, value, handleChanges, currencies}) => {
   return (
@@ -12,7 +13,7 @@ const CurrenciesDropdwon = ({label, name, value, handleChanges, currencies}) => 
       >
         {currencies.map(currency => {
           return (
-            <option value={currency}>{currency}</option>
+            <option value={currency.key}>{currency.key} - {currency.value}</option>
           )
         })}
       </select>

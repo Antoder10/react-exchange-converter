@@ -12,7 +12,33 @@ code {
     monospace;
 }
 
+.container {
+  margin-top: 2rem;
+}
+
+.table {
+  margin-top: 2.5rem;
+}
+
 .inputs {
   margin-top: 2rem;
   margin-bottom: 3rem;
+}
+
+.form-select,
+.form-control {
+  border: 2px solid #353638;
+  border-radius: 25px;
+}
+
+.btn-primary {
+  border-radius: 3rem;
+  width: 46.5rem;
+}
+
+.convert-card {
+  box-shadow: 10px 10px 30px -5px rgba(99, 99, 99, 1);
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 3rem;
 }

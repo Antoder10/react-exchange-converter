@@ -5,6 +5,7 @@ import useGetRate from '../hooks/useGetRate';
 
 import ConvertededAmount from './ConvertedAmount';
 import CurrenciesDropdwon from './CurrenciesDropdown';
+import LiveRates from './LiveRates';
 
 const initialValues = {
   amountToConvert: 0,
@@ -30,7 +31,7 @@ const App = () => {
     if(currentRate) {
       setValues({
         ...values,
-        convertedAmount: (amountToConvert*currentRate).toFixed(5),
+        convertedAmount: (amountToConvert*currentRate).toFixed(4),
         showConvertedAmount: true,
       });
     }
@@ -47,44 +48,51 @@ const App = () => {
 
   return (
     <div className="container text-center">
-      <h1>Currency Converter</h1>
-      <form className="row row-cols-lg-auto g-4 justify-content-center inputs" onSubmit={handleSubmit}>
-        <div className="col-auto">
-          <label for="basic-url" class="form-label">Amount</label>
-          <input
-            type="text"
-            name="amountToConvert"
-            class="form-control"
-            value={amountToConvert}
-            onChange={handleChanges}
-          />
+      <div className="row">
+        <div class="col-sm-9">
+          <h1>Currency Converter</h1>
+          <div className="convert-card">
+          <form className="row g-3 justify-content-center inputs" onSubmit={handleSubmit}>
+            <div className="col-auto">
+              <label for="basic-url" class="form-label">Amount</label>
+              <input
+                type="text"
+                name="amountToConvert"
+                class="form-control text-center"
+                value={amountToConvert}
+                onChange={handleChanges}
+              />
+            </div>
+            <CurrenciesDropdwon
+              label="From"
+              name="fromCurrency"
+              value={fromCurrency}
+              handleChanges={handleChanges}
+              currencies={currencies}
+            />
+            <CurrenciesDropdwon
+              label="To"
+              name="toCurrency"
+              value={toCurrency}
+              handleChanges={handleChanges}
+              currencies={currencies}
+            />
+            <button type="submit" className="btn btn-primary">Convert</button>
+          </form>
+          {showConvertedAmount && (
+            <ConvertededAmount
+              amountToConvert = {amountToConvert}
+              convertedAmount = {convertedAmount}
+              fromCurrency = {fromCurrency}
+              toCurrency = {toCurrency}
+            />
+          )}
+          </div>
         </div>
-        <CurrenciesDropdwon
-          label="From"
-          name="fromCurrency"
-          value={fromCurrency}
-          handleChanges={handleChanges}
-          currencies={currencies}
-        />
-        <CurrenciesDropdwon
-          label="To"
-          name="toCurrency"
-          value={toCurrency}
-          handleChanges={handleChanges}
-          currencies={currencies}
-        />
-        <div className="row row-cols-lg-auto g-4 justify-content-center">
-          <button type="submit" className="btn btn-primary">Convert</button>
-        </div>
-      </form>
-      {showConvertedAmount && (
-        <ConvertededAmount
-          amountToConvert = {amountToConvert}
-          convertedAmount = {convertedAmount}
-          fromCurrency = {fromCurrency}
-          toCurrency = {toCurrency}
-        />
-      )}
+          <div class="col-sm-3">
+            <LiveRates />
+          </div>
+      </div>
     </div>
   );
 }
